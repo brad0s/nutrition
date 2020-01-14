@@ -1,0 +1,46 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+:root {
+    --color-white: 0;
+    --color-blue: 238;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    --color: hsl(var(--color-white), 100%, 100%);
+    background-color: var(--color);
+    margin: 0;
+
+    #search {
+        div {
+            display: grid;
+            grid-template-columns: 5fr 1fr;
+            gap: 10px;
+            margin: 30px 0;
+            input, button {
+                padding: 5px 20px;
+                border-radius: 5px;
+                border: 2px solid #000000;
+                font-size: 1.3rem;
+                box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
+            }
+            button {
+                --color: var(--color-blue);
+                background-color: hsl(var(--color), 100%, 30%);
+                color: white;
+                &:hover {
+                    border-color: hsl(var(--color), 100%, 50%);
+                    box-shadow: 0 0 10px 2px hsl(0, 0%, 60%);
+                    border-width: 3px;
+                }
+            }
+        }
+    }
+}
