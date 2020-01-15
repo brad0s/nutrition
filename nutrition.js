@@ -1,12 +1,12 @@
 const APP_ID = config.APP_ID;
 const APP_KEY = config.APP_KEY;
 
-const searchButton = $('#search-button');
-const inputBox = $('#input');
+const searchButton = document.getElementById('search-button');
+const inputBox = document.getElementById('input');
 
-searchButton.click(function() {
-    console.log('click');
-    let params = inputBox.val();
+searchButton.addEventListener('click', function() {
+    let params = inputBox.value;
+    console.log(params);
     // $.ajax({
     //     'async': true,
     //     'crossDomain': true,
@@ -41,14 +41,24 @@ searchButton.click(function() {
         },
         'processData': true,
         "data": {
-        "query": "apple",
+        "query": params,
         
-        }, 
-        success: function(response,text,xhr) {
-            console.log(response); console.log(text); console.log(xhr); 
-        }, 
+        },
         error:function (textstatus){ 
             console.log(textstatus); 
-        } 
+        },
+        success: function(response,text,xhr) {
+            console.log(response); console.log(text); console.log(xhr); 
+            console.log(response.foods);
+            console.log(response.foods.length);
+            let data = response.foods;
+            for(let i=0; i<data.length; i++) {
+                console.log(data[i].length);
+                let div = document.createElement('DIV');
+                div.classList.add('nutrition-item');
+                div.textContent = data[i].food_name;
+                document.getElementById('nutrition-list').appendChild(div);
+            }
+        }
     });
 });
