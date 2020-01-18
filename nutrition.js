@@ -202,7 +202,7 @@ searchButton.addEventListener('click', search);
                         tdKey.textContent = nutrIdData[item.full_nutrients[i].attr_id];
                         tr.appendChild(tdKey);
                         let tdVal = document.createElement('TD');
-                        tdVal.textContent = Math.round( num * 10) / 10;
+                        tdVal.textContent = Math.round( item.full_nutrients[i].value * 10) / 10;
                         tr.appendChild(tdVal);
                         fnTbl.appendChild(tr);
                     }
@@ -217,7 +217,7 @@ searchButton.addEventListener('click', search);
 
 
 const nutrIdData = {};
-nutrIdData[203] = 'Protein';
+nutrIdData[203] =	'Protein';
 nutrIdData[204] = 'Total lipid (fat)';
 nutrIdData[205] = 'Carbohydrate, by difference';
 nutrIdData[209] = 'Starch';
