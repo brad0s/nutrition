@@ -7,17 +7,36 @@
 :root {
   --color-white: 0;
   --color-blue: 238;
+  --color-warn: 0;
+}
+.flip {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 4px;
+  box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
+  --color: hsl(var(--color-blue), 100%, 30%);
+  background-color: var(--color);
+  cursor: pointer;
 }
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
   --color: hsl(var(--color-white), 0%, 10%);
-  background-color: var(--color);
   margin: 0;
   padding: 15px;
+}
+body #search h1 {
+  text-align: center;
+  color: white;
+  --color: var(--color-blue);
+  background-color: hsl(var(--color), 100%, 30%);
+  padding: 15px 0;
+  border-radius: 5px;
 }
 body #search div {
   display: grid;
@@ -33,12 +52,89 @@ body #search div button {
   font-size: 1.3rem;
   box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
 }
+body #search div input.bad-req {
+  --color: var(--color-warn);
+  border-color: hsl(var(--color), 0%, 30%);
+}
 body #search div button {
   --color: var(--color-blue);
   background-color: hsl(var(--color), 100%, 30%);
   color: white;
+  transition: 0.25s;
 }
 body #search div button:hover {
+  transition: 0.25s;
+  -webkit-transition: 1s;
   border-color: hsl(var(--color), 100%, 50%);
   box-shadow: 0 0 10px 2px hsl(0, 0%, 60%);
+  cursor: pointer;
+}
+body #response #nutrition-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+body #response #nutrition-list .nutrition-item {
+  overflow: auto;
+  margin: 5px 0;
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
+  transition: all 1s;
+}
+body #response #nutrition-list .nutrition-item.flipped {
+  transform: rotateY(180deg);
+}
+body #response #nutrition-list .nutrition-item .side1 img {
+  float: left;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+}
+body #response #nutrition-list .nutrition-item .side1 h3 {
+  font-weight: 800;
+  line-height: 1.6rem;
+  font-size: 1.4rem;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+body #response #nutrition-list .nutrition-item .side1 div {
+  font-size: 0.8rem;
+}
+body #response #nutrition-list .nutrition-item .side1 .serving-info {
+  text-decoration: underline;
+}
+body #response #nutrition-list .nutrition-item .side1 .serving-info div {
+  text-decoration: none;
+}
+body #response #nutrition-list .nutrition-item .side1 .nutrition-facts {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+body #response #nutrition-list .nutrition-item .side1 .nutrition-facts > div {
+  line-height: 24px;
+}
+body #response #nutrition-list .nutrition-item .side2 {
+  display: none;
+  transform: rotateY(180deg);
+}
+body #response #nutrition-list .nutrition-item .side2 .flip {
+  position: sticky;
+  top: 238px;
+  right: 0;
+  float: right;
+}
+body #response #nutrition-list .nutrition-item .side2 table {
+  margin: 0 15px;
+  font-size: 1rem;
 }

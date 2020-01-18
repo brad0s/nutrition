@@ -6,20 +6,50 @@
 :root {
     --color-white: 0;
     --color-blue: 238;
+    --color-warn: 0;
+}
+
+.flip {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px 4px;
+    box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
+    --color: hsl(var(--color-blue), 100%, 30%);
+    background-color: var(--color);
+    cursor: pointer;
+    // &:hover {
+    //     transition: all 0.5s;
+      
+    //     & > svg {
+    //         transition: all 0.5s;
+            
+    //     }
+    // }
 }
 
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     width: 100vw;
     height: 100vh;
     --color: hsl(var(--color-white), 0%, 10%);
-    background-color: var(--color);
+    // background-color: var(--color);
     margin: 0;
     padding: 15px;
 
     #search {
+        h1 {
+            text-align: center;
+            color: white;
+            --color: var(--color-blue);
+            background-color: hsl(var(--color), 100%, 30%);
+            padding: 15px 0;
+            border-radius: 5px;
+        }
         div {
             display: grid;
             grid-template-columns: 5fr 1fr;
@@ -32,14 +62,100 @@ body {
                 font-size: 1.3rem;
                 box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
             }
+            input.bad-req {
+                --color: var(--color-warn);
+                border-color: hsl(var(--color), 0%, 30%);
+            }
             button {
                 --color: var(--color-blue);
                 background-color: hsl(var(--color), 100%, 30%);
                 color: white;
+                transition: 0.25s;
                 &:hover {
+                    transition: 0.25s;
+                    -webkit-transition: 1s;
+                    //transition-timing-function: linear;
                     border-color: hsl(var(--color), 100%, 50%);
                     box-shadow: 0 0 10px 2px hsl(0, 0%, 60%);
+                    cursor: pointer;
                     //border-width: 3px;
+                }
+            }
+        }
+    }
+    #response {
+        #nutrition-list {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            .nutrition-item {
+                overflow: auto;
+                margin: 5px 0;
+                border: 2px solid black;
+                padding: 15px;
+                border-radius: 5px;
+                width: 300px;
+                height: 300px;
+                display: inline-block;
+                position: relative;
+                box-shadow: 0 0 8px 2px hsl(0, 0%, 70%);
+                transition: all 1s;
+                &.flipped {
+                    transform: (rotateY(180deg));
+                }
+                .side1 {
+                    img {
+                        float: left;
+                        border-radius: 5px;
+                        margin-right: 10px;
+                        width: 100px;
+                        height: 100px;
+                    }
+                    h3 {
+                        font-weight: 800;
+                        line-height: 1.6rem;
+                        font-size: 1.4rem;
+                        margin-top: 0;
+                        text-transform: capitalize;
+                    }
+                    div {
+                        font-size: 0.8rem;
+                    }
+                    .serving-info {
+                        text-decoration: underline;
+                        div {
+                            text-decoration: none;
+                        }
+
+                    }
+                    .nutrition-facts {
+                        border: 1px solid black;
+                        border-radius: 5px;
+                        margin: 5px auto;
+                        // height: 148px;
+                        padding: 10px;
+                        display: flex;
+                        justify-content: center;
+
+                        & > div {
+                            line-height: 24px;
+                        }
+
+                    }
+                }
+                .side2 {
+                    display: none;
+                    transform: rotateY(180deg);
+                    .flip {
+                        position: sticky;
+                        top: 238px;
+                        right: 0;
+                        float: right;
+                    }
+                    table {
+                        margin: 0 15px;
+                        font-size: 1rem;
+                    }
                 }
             }
         }
